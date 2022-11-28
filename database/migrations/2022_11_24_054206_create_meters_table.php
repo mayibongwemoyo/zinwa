@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('meters', function (Blueprint $table) {
             $table->id();
+            $table->string('meter_number');
             $table->string('previous_reading');
             $table->string('current_reading');
             $table->string('consumption');
             $table->string('coordinates');
             $table->string('status');
-
             $table->timestamps();
         });
     }

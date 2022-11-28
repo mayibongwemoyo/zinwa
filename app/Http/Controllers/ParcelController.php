@@ -25,7 +25,7 @@ class ParcelController extends Controller
      */
     public function create()
     {
-        //
+        return view('parcel.add_user');
     }
 
     /**
