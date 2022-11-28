@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('transaction_type');
             $table->string('transaction_amount');
             $table->string('transaction_date');
+            $table->string('amount_due');
             $table->timestamps();
         });
     }
