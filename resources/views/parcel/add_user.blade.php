@@ -70,9 +70,15 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
+                                @if(Session::has('error'))
+                                    <div class="alert alert-danger">
+                                        {{Session::get('error')}}
+                                    </div>
+                                @endif
                             </div>
                             <div class="card-body">
                                 <form action="{{route('add_user')}}" method="POST">
+                                    @csrf
                                     <h4 class="card-title">Meter Info</h4>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -93,28 +99,28 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Owner First Name</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" name="first_name" required class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label>Owner Last Name</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" name="last_name" required class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" name="stand_number" required class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label>Parcel Type</label>
-                                                <select class="select">
+                                                <select class="select" name="parcel_type" required>
                                                     <option>Select</option>
-                                                    <option value="1">Urban A1</option>
-                                                    <option value="2">Urban A2</option>
-                                                    <option value="1">Urban B1</option>
-                                                    <option value="2">Urban B2</option>
-                                                    <option value="3">Commercial A1</option>
-                                                    <option value="4">Commercial A2</option>
-                                                    <option value="3">Commercial B1</option>
-                                                    <option value="4">Commercial B2</option>
+                                                    <option value="Urban A1">Urban A1</option>
+                                                    <option value="Urban A2">Urban A2</option>
+                                                    <option value="Urban B1">Urban B1</option>
+                                                    <option value="Urban B2">Urban B2</option>
+                                                    <option value="Commercial A1">Commercial A1</option>
+                                                    <option value="Commercial A2">Commercial A2</option>
+                                                    <option value="Commercial B1">Commercial B1</option>
+                                                    <option value="Commercial B2">Commercial B2</option>
                                                 </select>
                                             </div>
                                             <div class="text-end">

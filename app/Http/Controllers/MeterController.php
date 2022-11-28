@@ -15,7 +15,9 @@ class MeterController extends Controller
      */
     public function index()
     {
-        //
+        $meters = Meter::all();
+
+        return view('meter.view', compact('meters'));
     }
 
     /**

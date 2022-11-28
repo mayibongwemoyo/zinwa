@@ -89,7 +89,7 @@
                                     </span>
                                     <div class="dash-widget-info">
                                         <h3>148</h3>
-                                        <h6 class="text-muted">Providers</h6>
+                                        <h6 class="text-muted">Meters</h6>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                                     </span>
                                     <div class="dash-widget-info">
                                         <h3>124</h3>
-                                        <h6 class="text-muted">Services</h6>
+                                        <h6 class="text-muted">Parcels</h6>
                                     </div>
                                 </div>
                             </div>
