@@ -86,7 +86,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">#</span>
                                                         </div>
-                                                        <input class="form-control" name="meter_number" type="text" />
+                                                        <input class="form-control" name="parcel_id" type="text" />
                                                         <div class="input-group-append">
                                                             <button class="btn btn-primary" type="submit">
                                                                 Search

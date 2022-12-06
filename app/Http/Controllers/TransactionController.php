@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Meter;
+use App\Models\Parcel;
 use App\Models\Transaction;
 use Illuminate\Http\Response;
+use App\Http\Controllers\ParcelController;
+use App\Http\Controllers\MeterController;
+
+
 
 class TransactionController extends Controller
 {
@@ -28,11 +33,11 @@ class TransactionController extends Controller
      */
     public function create(StoreTransactionRequest $request)
     {
-        $meter_number = $request->input('meter_number');
-        $meter = Meter::where('meter_number', $meter_number)->first();
-        if ($meter) {
+        $id = $request->input('parcel_id');
+        $parcel = Parcel::where('parcel_id', $id)->first();
+        if ($parcel) {
             return view('payment.create')
-                ->with('meter', $meter);
+                ->with('parcel', $parcel);
         } else {
             return redirect()->back()->with('error', 'Meter number was not found');
         }
@@ -46,9 +51,30 @@ class TransactionController extends Controller
      */
     public function store(StoreTransactionRequest $request)
     {
-        //
+        $parcel_id = $request->input('meter_number');
+        $meter = Meter::where('parcel_id', $parcel_id)->first();
+        if ($meter) {
+            return view('payment.create')
+                ->with('meter', $meter);
+            if ($meter->save()) {
+                $transaction = new Transaction();
+                $transaction->transaction_id = $request->transaction_id;
+                $transaction->amount_previous = $transaction->amount_due;
+                $transaction->amount_due = ($meter->consumption * 0.13) + $transaction->amount_previous;
+                $transaction->amount_paid = $request->amount_paid;
+                if($transaction->amount_paid < $transaction->amount_due){
+                    $transaction->amount_due=$transaction->amount_due - $transaction->amount_paid;
+                    $meter->status= 'unpaid';
+                }
+                else{
+                    $meter->status = 'paid';
+                }
+            }
+            else {
+                return redirect()->back()->with('error', 'Something went wrong');
+            }
     }
-
+    }
     /**
      * Display the specified resource.
      *

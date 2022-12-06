@@ -10,9 +10,13 @@ class Parcel extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
+        'parcel_id',
         'stand_owner',
         'stand_number',
         'parcel_type',
+        'locationLatitude',
+        'locationLongitude',
     ];
 
     public function meter()

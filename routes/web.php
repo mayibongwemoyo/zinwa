@@ -31,15 +31,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 Route::get('/dashboard',function(){return view('dashboard');})->name('dashboard');
+// Route::get('/payment/dashboard',function(){return view('dashboard');})->name('dashboard');
+
 
 Route::get('/add_user',[ParcelController::class, 'create'])->name('add_user');
 Route::post('/add_user',[ParcelController::class, 'store'])->name('add_user');
 
 Route::get('/payment',[TransactionController::class, 'index'])->name('payment');
 Route::get('/payment/create',[TransactionController::class, 'create'])->name('payment.create');
+
+Route::post('payment/create',[MeterController::class, 'store'])->name('payment.create');
+
 Route::post('/payment',[TransactionController::class, 'store'])->name('payment');
 
-Route::get('/view',[MeterController::class, 'index'])->name('view');
+Route::get('/view',[ParcelController::class, 'index'])->name('view');
+
+
+
 });
 
 

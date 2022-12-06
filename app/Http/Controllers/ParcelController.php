@@ -17,7 +17,9 @@ class ParcelController extends Controller
      */
     public function index()
     {
-        //
+        $parcels = Parcel::all();
+
+        return view('meter.view', compact('parcels'));
     }
 
     /**
@@ -38,25 +40,18 @@ class ParcelController extends Controller
      */
     public function store(StoreParcelRequest $request)
     {
+        // dd($request->all());
         $parcel = new Parcel();
+        $parcel->id = $request->id;
+        $parcel->parcel_id = $parcel->id;
         $parcel->stand_owner = $request->first_name . ' ' . $request->last_name;
         $parcel->stand_number = $request->stand_number;
         $parcel->parcel_type = $request->parcel_type;
+        $parcel->locationLatitude= $request->locationLatitude;
+        $parcel->locationLongitude= $request->locationLongitude;
+
         if ($parcel->save()) {
-            $meter = new Meter();
-            $meter->parcel_id = $parcel->id;
-            $meter->meter_number = $request->meter_number;
-            $meter->previous_reading = '0';
-            $meter->current_reading = '0';
-            $meter->consumption = '0';
-            $meter->coordinates = $request->coordinates;
-            $meter->status = 'paid';
-            if ($meter->save()) {
                 return redirect()->route('view')->with('success', 'Parcel added successfully');
-            }
-            else {
-                return redirect()->back()->with('error', 'Something went wrong');
-            }
         } else {
             return redirect()->back()->with('error', 'Parcel not added');
         }

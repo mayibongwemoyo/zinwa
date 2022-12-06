@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('meter_id')->constrained();
-            $table->string('transaction_type');
+            $table->string('transaction_id');
             $table->string('transaction_amount');
             $table->string('transaction_date');
+            $table->string('amount_previous');
             $table->string('amount_due');
+            $table->string('amount_paid');
             $table->timestamps();
         });
     }

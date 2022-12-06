@@ -10,12 +10,11 @@ class Meter extends Model
     use HasFactory;
 
     protected $fillable = [
+        // 'id',
         'parcel_id',
-        'meter_number',
         'previous_reading',
         'current_reading',
         'consumption',
-        'coordinates',
         'status',
     ];
 

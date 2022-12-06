@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Meter;
 use App\Http\Requests\StoreMeterRequest;
 use App\Http\Requests\UpdateMeterRequest;
+use App\Http\Controllers\ParcelController;
+use App\Models\Parcel;
+
+
 
 class MeterController extends Controller
 {
@@ -15,9 +19,9 @@ class MeterController extends Controller
      */
     public function index()
     {
-        $meters = Meter::all();
+        // $meters = Meter::all();
 
-        return view('meter.view', compact('meters'));
+        // return view('meter.view', compact('meters'));
     }
 
     /**
@@ -25,9 +29,10 @@ class MeterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(StoreMeterRequest $request)
     {
-        //
+        return view('payment.pay');
+
     }
 
     /**
@@ -38,7 +43,28 @@ class MeterController extends Controller
      */
     public function store(StoreMeterRequest $request)
     {
-        //
+
+        dd($request->all());
+        $parcel_id = $request->input('parcel_id');
+        $parcel = Meter::where('parcel_id', $parcel_id)->first();
+        if ($parcel->save()) {
+            $meter = new Meter();
+            $meter->previous_reading = $meter->current_reading;
+            $meter->current_reading = $request->current_reading;
+            $meter->consumption = $meter->current_reading - $meter->previous_reading;
+            $meter->locationLatitude = $request->locationLatitude;
+            $meter->locationLongitude = $request->locationLongitude;
+            $meter->status = 'unpaid';
+            if ($meter->save()) {
+                return redirect()->route('payment.create')->with('success', 'Parcel added successfully');
+            } else {
+                return redirect()->back()->with('error', 'Something went wrong');
+            }
+        }
+        // } else {
+        //     return redirect()->back()->with('error', 'Parcel not added');
+
+
     }
 
     /**
