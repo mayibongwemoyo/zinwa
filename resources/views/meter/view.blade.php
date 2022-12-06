@@ -87,22 +87,21 @@
                                         <tr>
                                             <th>Meter</th>
                                             <th>Owner</th>
-                                            <th>Coordinates</th>
+                                            {{-- <th>C</th> --}}
                                             <th>Address</th>
                                             <th>Reading</th>
-                                            <th>Amount Due</th>
+                                            <th>Payment status</th>
 
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($meters as $meter)
+                                        @foreach($parcels as $parcel)
                                             <tr>
-                                                <td>{{$meter->meter_number}}</td>
-                                                <td>{{$meter->parcel->stand_owner}}</td>
-                                                <td>{{$meter->coordinates}}</td>
-                                                <td>{{$meter->parcel->stand_number}}</td>
-                                                <td>{{$meter->current_reading}}</td>
-                                                <td>{{$meter->amount_due}}</td>
+                                                <td>{{$parcel->id}}</td>
+                                                <td>{{$parcel->stand_owner}}</td>
+                                                <td>{{$parcel->stand_number}}</td>
+                                                <td>{{$parcel->current_reading}}</td>
+                                                <td>not paid</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

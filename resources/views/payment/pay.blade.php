@@ -97,16 +97,16 @@
                                                                     <td><b>Owner:</b></td>
                                                                     <td>{{ $parcel->stand_owner }}</td>
                                                                     {{-- <td><b>Reading:</b></td>
-                                                                    <td><code>{{ $meter->current_reading }}</code></td>
-                                                                </tr> --}}
+                                                                    <td><code>{{ $meter->current_reading }}</code></td> --}}
+                                                                </tr>
                                                                 <tr>
                                                                     <td><b>Location Latitude:</b></td>
                                                                     <td>{{ $parcel->locationLatitude}}</td>
                                                                     <td><b>Location Longitude:</b></td>
                                                                     <td>{{ $parcel->locationLongitude}}</td>
-                                                                    <td><b>Amount Due:</b></td>
-                                                                    {{-- <td>$<code>{{ $meter->amount_due }}</code></td>
-                                                                </tr> --}}
+                                                                    {{-- <td><b>Amount Due:</b></td>
+                                                                    <td>$<code>{{ $meter->amount_due }}</code></td> --}}
+                                                                </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -114,8 +114,12 @@
                                             </div>
                                             <div class="form-group mb-0 row">
                                                 <h4 class="card-title">Enter Meter Reading</h4>
-
-                                                <form action="{{ route('payment.create') }}" method="POST">
+                                                @if(Session::has('error'))
+                                                <div class="alert alert-danger">
+                                                    {{Session::get('error')}}
+                                                </div>
+                                            @endif
+                                                <form action="{{ route('payment.pay') }}" method="POST">
                                                     @csrf
                                                     <div class="col-md-10">
                                                         <div class="input-group">

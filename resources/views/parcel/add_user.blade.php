@@ -84,11 +84,15 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Meter Number</label>
-                                                <input type="text" required name="meter_number" class="form-control">
+                                                <input type="text" required name="id" class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <label>Meter Coordinates</label>
-                                                <input type="text" name="coordinates" required class="form-control">
+                                                <label>Lattitude Coordinates</label>
+                                                <input type="text" name="locationLatitude" required class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Longitude Coordinates</label>
+                                                <input type="text" name="locationLongitude" required class="form-control">
                                             </div>
 
                                         </div>

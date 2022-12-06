@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('parcels', function (Blueprint $table) {
             $table->id();
+            $table->string('parcel_id');
+            // $table->string('meter_number');
             $table->string('stand_owner');
             $table->string('stand_number');
+            $table->string('locationLatitude');
+            $table->string('locationLongitude');
             $table->string('parcel_type');
             $table->timestamps();
         });

@@ -12,7 +12,10 @@ class Transaction extends Model
     protected $fillable = [
         'parcel_id',
         'meter_id',
-        'amount',
+        'transaction_id',
+        'amount_due',
+        'amount_previous',
+        'amount_paid',
         'status',
     ];
 

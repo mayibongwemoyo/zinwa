@@ -73,7 +73,7 @@
                                         <i class="far fa-user"></i>
                                     </span>
                                     <div class="dash-widget-info">
-                                        <h3>429</h3>
+                                        <h3>3</h3>
                                         <h6 class="text-muted">Users</h6>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                         <i class="fas fa-user-shield"></i>
                                     </span>
                                     <div class="dash-widget-info">
-                                        <h3>148</h3>
+                                        <h3>4</h3>
                                         <h6 class="text-muted">Meters</h6>
                                     </div>
                                 </div>
@@ -103,13 +103,71 @@
                                         <i class="fas fa-qrcode"></i>
                                     </span>
                                     <div class="dash-widget-info">
-                                        <h3>124</h3>
+                                        <h3>4</h3>
                                         <h6 class="text-muted">Parcels</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <h3 class="page-title">View Coordinates</h3>
+                    {{-- <ul class="breadcrumb"> --}}
+                        <li class="breadcrumb-item active">Select Parcel to view on map</li>
+                        <div class="table-responsive">
+                            <table class="datatable table table-stripped">
+                                <thead>
+                                <tr>
+                                    <th>Meter</th>
+                                    {{-- <th>Owner</th> --}}
+                                    {{-- <th>C</th> --}}
+                                    <th>Latitude</th>
+                                    <th>Longitude</th>
+                                    <th>Payment status</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                               <tr>
+                                <td>3742</td>
+                                <td>
+                                    17.79553173792511</td>
+                                <td>30.981278225275062</td>
+                                <td>not paid</td>
+                               <td> <button type="submit" class="btn btn-primary">Locate</button></td>
+                               </tr>
+                               <tr>        <td>3750</td>
+                                <td>
+                                    -17.792716341990136</td>
+                                <td>30.98467488933664</td>
+                                <td>not paid</td>
+                               <td>
+                                <button type="submit" class="btn btn-primary">Locate</button></td>
+
+                            </tr>
+                               <tr><td>3751</td>
+                                <td>
+                                    -17.79284901403003</td>
+                                <td>30.984563387534802</td>
+                                <td>not paid</td>
+                               <td>  <button type="submit" class="btn btn-primary" >Locate</button></td>
+
+                            </tr></tr>
+                               <tr><td>3752</td>
+                                <td>
+                                    -17.79291770537807</td>
+                                <td>30.984424999803224</td>
+                                <td>not paid</td>
+                               <td> <button type="submit" class="btn btn-primary">Locate</button></td>
+
+                            </tr></tr>
+
+                                </tbody>
+                            </table>
+                    {{-- </ul> --}}
+                    <div class = map>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d485878.53672816145!2d31.462570314257817!3d-17.935601917474344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2szw!4v1669714073151!5m2!1sen!2szw" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    {{-- @include('index') --}}
                     {{-- <div class="col-xl-3 col-sm-6 col-12">
                         <div class="card">
                             <div class="card-body">
